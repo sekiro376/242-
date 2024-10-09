@@ -1,0 +1,47 @@
+#include <iostream>
+#include<stdio.h>
+
+
+//写一个判断是否为质数的函数
+int znum(int num) 
+{
+    if (num < 2) 
+    {
+        return 0;
+    }
+    
+    for (int i = 2; i*i <= num; i++) 
+    {
+        if (num % i == 0) 
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main()
+{
+    int N;
+    //输入正偶数
+    scanf_s("%d", &N);
+    //限制循环
+    for (int i = 1; 2 * i + 2 <= N; i++)
+    {
+        int num = 2 * i + 2;
+        int found = 0;
+        for (int m = 2; m <= num / 2; m++)
+        {
+
+            //输出质数和
+            if (znum(m) && znum(num - m))
+            {
+                printf("%d =%d+%d\n", num, m, num - m);
+                found = 1;
+                break;
+
+            }
+        }
+    }
+    return 0;
+}
